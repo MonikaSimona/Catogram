@@ -25,6 +25,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public ArrayList<Post> posts;
     public Context context;
 
+
     static final String IMAGE_KEY = "Image Resource";
 
     public PostAdapter(ArrayList<Post> posts, Context context) {
@@ -34,17 +35,19 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+
 
         CircleImageView profileImg;
         TextView userName;
-        public ImageView mainImgUrl;
+        ImageView mainImgUrl;
         TextView desc;
         TextView numLikes;
         ImageButton iconLike;
         TextView datePosted;
         RelativeLayout rl;
-        Post mCurrentPost;
+        public Post mCurrentPost;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +63,32 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
 
         }
+
+
+        void bindTo(Post mCurrentPost){
+
+
+
+            mCurrentPost = mCurrentPost;
+
+
+
+
+        }
+
+        @Override
+        public void onClick(View view) {
+
+
+
+                    Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+                    Intent commentIntent =  Post.starter(context, mCurrentPost.getMainImgUrl());
+
+                        context.startActivity(commentIntent);
+                }
+
+
+
     }
 
     @NonNull
@@ -81,13 +110,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         viewHolder.numLikes.setText(posts.get(i).getNumLikes());
         viewHolder.datePosted.setText((Integer) posts.get(i).getDatePosted());
 
-        viewHolder.rl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
-                Intent commentIntent =  Post.starter(context, )
-            }
-        });
+        viewHolder.rl.setOnClickListener((View.OnClickListener) context);
     }
     @Override
     public int getItemCount() {

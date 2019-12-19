@@ -8,14 +8,14 @@ import androidx.annotation.DrawableRes;
 public class Post {
     private String userName;
     private String profileImgUrl;
-    private String mainImgUrl;
+    private int mainImgUrl;
     private String desc;
     private Integer numLikes;
     private Integer datePosted;
 
     static final String IMAGE_KEY = "Image Resource";
 
-    public Post (String userName,String profileImgUrl,String mainImgUrl,String desc,Integer numLikes,Integer datePosted){
+    public Post (String userName,String profileImgUrl,Integer mainImgUrl,String desc,Integer numLikes,Integer datePosted){
 
         this.userName = userName;
         this.profileImgUrl = profileImgUrl;
@@ -42,11 +42,11 @@ public class Post {
         this.profileImgUrl = profileImgUrl;
     }
 
-    public String getMainImgUrl() {
+    public int getMainImgUrl() {
         return mainImgUrl;
     }
 
-    public void setMainImgUrl(String mainImgUrl) {
+    public void setMainImgUrl(Integer mainImgUrl) {
         this.mainImgUrl = mainImgUrl;
     }
 
