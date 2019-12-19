@@ -1,6 +1,7 @@
 package com.example.catogram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,9 +25,41 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public ArrayList<Post> posts;
     public Context context;
 
+    static final String IMAGE_KEY = "Image Resource";
+
     public PostAdapter(ArrayList<Post> posts, Context context) {
         this.posts = posts;
         this.context = context;
+    }
+
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+
+        CircleImageView profileImg;
+        TextView userName;
+        public ImageView mainImgUrl;
+        TextView desc;
+        TextView numLikes;
+        ImageButton iconLike;
+        TextView datePosted;
+        RelativeLayout rl;
+        Post mCurrentPost;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            profileImg = itemView.findViewById(R.id.profileImg);
+            userName = itemView.findViewById(R.id.userName);
+            mainImgUrl = itemView.findViewById(R.id.mainImg);
+            desc = itemView.findViewById(R.id.desc);
+            numLikes = itemView.findViewById(R.id.numLikes);
+            iconLike = itemView.findViewById(R.id.icon);
+            datePosted = itemView.findViewById(R.id.datePosted);
+            rl = itemView.findViewById(R.id.rl);
+
+
+        }
     }
 
     @NonNull
@@ -50,7 +84,9 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         viewHolder.rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();            }
+                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+                Intent commentIntent =  Post.starter(context, )
+            }
         });
     }
     @Override
@@ -58,31 +94,6 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         return posts.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
 
-        CircleImageView profileImg;
-        TextView userName;
-        ImageView mainImgUrl;
-        TextView desc;
-        TextView numLikes;
-        ImageButton iconLike;
-        TextView datePosted;
-        RelativeLayout rl;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            profileImg = itemView.findViewById(R.id.profileImg);
-            userName = itemView.findViewById(R.id.userName);
-            mainImgUrl = itemView.findViewById(R.id.mainImg);
-            desc = itemView.findViewById(R.id.desc);
-            numLikes = itemView.findViewById(R.id.numLikes);
-            iconLike = itemView.findViewById(R.id.icon);
-            datePosted = itemView.findViewById(R.id.datePosted);
-            rl = itemView.findViewById(R.id.rl);
-
-
-        }
-    }
 }
 

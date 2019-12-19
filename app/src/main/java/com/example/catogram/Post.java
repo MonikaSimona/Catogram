@@ -1,5 +1,10 @@
 package com.example.catogram;
 
+import android.content.Context;
+import android.content.Intent;
+
+import androidx.annotation.DrawableRes;
+
 public class Post {
     private String userName;
     private String profileImgUrl;
@@ -7,6 +12,8 @@ public class Post {
     private String desc;
     private Integer numLikes;
     private Integer datePosted;
+
+    static final String IMAGE_KEY = "Image Resource";
 
     public Post (String userName,String profileImgUrl,String mainImgUrl,String desc,Integer numLikes,Integer datePosted){
 
@@ -65,6 +72,13 @@ public class Post {
 
     public void setDatePosted(Integer datePosted) {
         this.datePosted = datePosted;
+    }
+
+    static Intent starter(Context context, @DrawableRes int imageResId) {
+        Intent commentIntent = new Intent(context, Comments.class);
+
+        commentIntent.putExtra(IMAGE_KEY, imageResId);
+        return commentIntent;
     }
 
 }
