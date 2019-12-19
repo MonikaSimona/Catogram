@@ -1,20 +1,13 @@
 <resources>
     <string name="app_name">Catogram</string>
 
-    <string-array name="comments">
-        <item >"Wow, you look beautiful"</item>
-        <item>"I think this is the best I’ve seen in a long time"</item>
-        <item>"You’re like sunshine when it’s raining in my life."</item>
-        <item>"Is this real or what? I guess this is how angels look"</item>
-        <item>"I think it’s booty-full"</item>
-        <item>"Cats choose us; we don’t own them."</item>
-        <item>"Time spent with a cat is never wasted"</item>
-        <item>"How did I get so lucky to have such a cool best friend?"</item>
-        <item>"Let's get brunch again this weekend."</item>
-        <item>"Excuse me, sunset, but you're in the way of looking at my beautiful bestie"</item>
-        <item>"We go together like burgers and fries, which, btw, we should go get rn."</item>
-        <item>"So you've been the coolest kid since day one? Knew it."</item>
-        <item>"My best friend is the cutest."</item>
 
-    </string-array>
+    <array name="sports_images">
+        <item>@drawable/catsad</item>
+        <item>@drawable/kitten</item>
+        <item>@drawable/catty</item>
+        <item>@drawable/cat1</item>
+
+    </array>
+
 </resources>
