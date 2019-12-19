@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Catogram</string>
 
+
     <array name="sports_images">
         <item>@drawable/catsad</item>
         <item>@drawable/kitten</item>
@@ -8,4 +9,5 @@
         <item>@drawable/cat1</item>
 
     </array>
+
 </resources>
