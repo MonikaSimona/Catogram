@@ -15,7 +15,7 @@
             android:id="@+id/profileImg"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ic_launcher_background"
+
             android:layout_margin="20dp"/>
         <TextView
             android:id="@+id/userName"
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="450dp"
 
-        android:src="@drawable/ic_launcher_background"
+
         android:layout_below="@+id/rlInner"
         />
     <RelativeLayout

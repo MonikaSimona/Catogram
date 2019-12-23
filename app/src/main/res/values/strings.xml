@@ -2,12 +2,49 @@
     <string name="app_name">Catogram</string>
 
 
-    <array name="sports_images">
+    <array name="mainImg">
         <item>@drawable/catsad</item>
         <item>@drawable/kitten</item>
         <item>@drawable/catty</item>
         <item>@drawable/cat1</item>
 
     </array>
+
+    <string-array name="userNames">
+
+
+        <item>"Kiko"</item>
+        <item>"Koko"</item>
+        <item>"Kiki"</item>
+        <item>"Fifi"</item>
+    </string-array>
+
+    <string-array name="profileImg">
+        <item>@drawable/catsad</item>
+        <item>@drawable/kitten</item>
+        <item>@drawable/catty</item>
+        <item>@drawable/cat1</item>
+    </string-array>
+
+    <string-array name="desc">
+        <item>"So brathtaknig view"</item>
+        <item>"Winter Wonderlan"</item>
+        <item>"Messy Eater #lunch"</item>
+        <item>"Nice Image"</item>
+    </string-array>
+
+    <string-array name="numLikes">
+        <item>"12"</item>
+        <item>"100"</item>
+        <item>"6"</item>
+        <item>"50"</item>
+    </string-array>
+
+    <string-array name="datePosted">
+        <item>"5/8/2012"</item>
+        <item>"5/8/2012"</item>
+        <item>"5/8/2012"</item>
+        <item>"5/8/2012"</item>
+    </string-array>
 
 </resources>

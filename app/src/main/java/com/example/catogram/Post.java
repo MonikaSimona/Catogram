@@ -7,15 +7,15 @@ import androidx.annotation.DrawableRes;
 
 public class Post {
     private String userName;
-    private String profileImgUrl;
+    private int profileImgUrl;
     private int mainImgUrl;
     private String desc;
-    private Integer numLikes;
-    private Integer datePosted;
+    private String numLikes;
+    private String datePosted;
 
     static final String IMAGE_KEY = "Image Resource";
 
-    public Post (String userName,String profileImgUrl,Integer mainImgUrl,String desc,Integer numLikes,Integer datePosted){
+    public Post (String userName, int profileImgUrl, int mainImgUrl, String desc, String numLikes, String datePosted){
 
         this.userName = userName;
         this.profileImgUrl = profileImgUrl;
@@ -34,11 +34,11 @@ public class Post {
         this.userName = userName;
     }
 
-    public String getProfileImgUrl() {
+    public int getProfileImgUrl() {
         return profileImgUrl;
     }
 
-    public void setProfileImgUrl(String profileImgUrl) {
+    public void setProfileImgUrl(int profileImgUrl) {
         this.profileImgUrl = profileImgUrl;
     }
 
@@ -46,7 +46,7 @@ public class Post {
         return mainImgUrl;
     }
 
-    public void setMainImgUrl(Integer mainImgUrl) {
+    public void setMainImgUrl(int mainImgUrl) {
         this.mainImgUrl = mainImgUrl;
     }
 
@@ -58,19 +58,19 @@ public class Post {
         this.desc = desc;
     }
 
-    public Integer getNumLikes() {
+    public String getNumLikes() {
         return numLikes;
     }
 
-    public void setNumLikes(Integer numLikes) {
+    public void setNumLikes(String numLikes) {
         this.numLikes = numLikes;
     }
 
-    public Integer getDatePosted() {
+    public String getDatePosted() {
         return datePosted;
     }
 
-    public void setDatePosted(Integer datePosted) {
+    public void setDatePosted(String datePosted) {
         this.datePosted = datePosted;
     }
 
