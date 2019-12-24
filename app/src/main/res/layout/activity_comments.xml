@@ -6,12 +6,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Comments">
+   <RelativeLayout
+       android:id="@+id/rl2"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+
+      <ImageButton
+          android:id="@+id/back"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/back"
+          android:background="@android:color/transparent"
+
+          android:layout_marginLeft="9dp"
+          android:layout_marginTop="5dp"
+          android:onClick="back"
+
+          />
+       <ImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/settings"
+           android:background="@android:color/transparent"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:layout_marginRight="9dp"
+           android:layout_marginTop="5dp"
+           />
+
+
+   </RelativeLayout>
 
     <ImageView
         android:id="@+id/mainImg"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-
+        android:src="@drawable/cat1"
         android:layout_marginTop="10dp"
 
         />
@@ -31,6 +62,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Wow, you look beautiful"
+                android:backgroundTintMode="multiply"
+                android:background="@color/userNameBar"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 />
@@ -39,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="I think it’s purrfect"
+                android:background="@color/userNameBar"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -48,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="I think this is the best I’ve seen in a long time"
+                android:background="@color/userNameBar"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -56,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="How did I get so lucky to have such a cool best friend?"
+                android:background="@color/userNameBar"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -64,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="We go together like burgers and fries, which, btw, we should go get rn."
+                android:background="@color/userNameBar"
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -72,7 +109,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="My best friend is the cutest."
+                android:background="@color/userNameBar"
                 android:layout_margin="10dp"
+
                 android:textSize="20sp"
                 android:textStyle="bold"/>
             <TextView
@@ -80,6 +119,8 @@
                 android:layout_height="wrap_content"
                 android:text="This is so pawsome!"
                 android:layout_margin="10dp"
+                android:background="@color/userNameBar"
+
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
@@ -87,6 +128,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="How did I get so lucky to have such a cool best friend?"
+                android:background="@color/userNameBar"
+
                 android:layout_margin="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"/>

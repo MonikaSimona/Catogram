@@ -38,7 +38,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
      PostAdapter(ArrayList<Post> posts, Context context) {
         this.posts = posts;
         this.mContext = context;
-        mGradientDrawable.setColor(Color.blue(Color.BLUE));
+
 
         Drawable drawable = ContextCompat.getDrawable
                 (context,R.drawable.cat1);
