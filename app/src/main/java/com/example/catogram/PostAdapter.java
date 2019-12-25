@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -30,38 +31,32 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     public ArrayList<Post> posts;
     public Context mContext;
-    private GradientDrawable mGradientDrawable;
 
 
-
-
-     PostAdapter(ArrayList<Post> posts, Context context) {
+     public PostAdapter(Context context,ArrayList<Post> posts) {
         this.posts = posts;
         this.mContext = context;
 
-
-        Drawable drawable = ContextCompat.getDrawable
-                (context,R.drawable.cat1);
-
-        mGradientDrawable = new GradientDrawable();
-        if(drawable != null) {
-            mGradientDrawable.setSize(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         }
-    }
+
 
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(mContext, LayoutInflater.from(mContext).
-                inflate(R.layout.layout_posts, parent, false), mGradientDrawable);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_posts,viewGroup,false);
+        return new PostAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
+         viewHolder.userName.setText(posts.get(i).getUserName());
+         viewHolder.desc.setText(posts.get(i).getDesc());
+         viewHolder.numLikes.setText(posts.get(i).getNumLikes());
+         viewHolder.datePosted.setText(posts.get(i).getDatePosted());
 
-        Post currentPost = posts.get(i);
-        viewHolder.bindTo(currentPost);
-
+        Picasso.get().load(posts.get(i).getMainImgUrl()).into(viewHolder.mainImgUrl);
+        Picasso.get().load(posts.get(i).getProfileImgUrl()).into(viewHolder.profileImg);
 
     }
     @Override
@@ -82,11 +77,11 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
        private ImageButton iconLike;
        private TextView datePosted;
        private RelativeLayout rl;
-       private GradientDrawable mGradientDrawable;
+
        public Post mCurrentPost;
        private Context mContext;
 
-        ViewHolder(Context context,View itemView,GradientDrawable gradientDrawable) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             profileImg = itemView.findViewById(R.id.profileImg);
@@ -98,31 +93,9 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             datePosted = itemView.findViewById(R.id.datePosted);
             rl = itemView.findViewById(R.id.rl);
 
-            mContext = context;
-            mGradientDrawable = gradientDrawable;
 
 
             itemView.setOnClickListener(this);
-
-
-        }
-
-
-        void bindTo(Post CurrentPost){
-
-           userName.setText(CurrentPost.getUserName());
-           desc.setText(CurrentPost.getDesc());
-           numLikes.setText(CurrentPost.getNumLikes());
-           datePosted.setText(CurrentPost.getDatePosted());
-
-
-            mCurrentPost = CurrentPost;
-
-
-            Glide.with(mContext).load(CurrentPost.
-                    getProfileImgUrl()).placeholder(mGradientDrawable).into(profileImg);
-            Glide.with(mContext).load(CurrentPost.
-                    getMainImgUrl()).placeholder(mGradientDrawable).into(mainImgUrl);
 
 
         }
