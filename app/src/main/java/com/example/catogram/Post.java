@@ -7,15 +7,15 @@ import androidx.annotation.DrawableRes;
 
 public class Post {
     private String userName;
-    private int profileImgUrl;
-    private int mainImgUrl;
+    private String profileImgUrl;
+    private String mainImgUrl;
     private String desc;
     private String numLikes;
     private String datePosted;
 
     static final String IMAGE_KEY = "Image Resource";
 
-    public Post (String userName, int profileImgUrl, int mainImgUrl, String desc, String numLikes, String datePosted){
+    public Post (String userName, String profileImgUrl, String mainImgUrl, String desc, String numLikes, String datePosted){
 
         this.userName = userName;
         this.profileImgUrl = profileImgUrl;
@@ -34,19 +34,19 @@ public class Post {
         this.userName = userName;
     }
 
-    public int getProfileImgUrl() {
+    public String getProfileImgUrl() {
         return profileImgUrl;
     }
 
-    public void setProfileImgUrl(int profileImgUrl) {
+    public void setProfileImgUrl(String profileImgUrl) {
         this.profileImgUrl = profileImgUrl;
     }
 
-    public int getMainImgUrl() {
+    public String getMainImgUrl() {
         return mainImgUrl;
     }
 
-    public void setMainImgUrl(int mainImgUrl) {
+    public void setMainImgUrl(String mainImgUrl) {
         this.mainImgUrl = mainImgUrl;
     }
 
@@ -74,10 +74,10 @@ public class Post {
         this.datePosted = datePosted;
     }
 
-    static Intent starter(Context context, @DrawableRes int imageResId) {
+    static Intent starter(Context context, String imageUrl) {
         Intent commentIntent = new Intent(context, Comments.class);
 
-        commentIntent.putExtra(IMAGE_KEY, imageResId);
+        commentIntent.putExtra(IMAGE_KEY, imageUrl);
         return commentIntent;
     }
 
