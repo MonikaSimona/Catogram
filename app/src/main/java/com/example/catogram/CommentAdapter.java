@@ -10,13 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
-    public ArrayList<Comment> comments;
+    public ArrayList<Comment> comments ;
     public Context mContext;
 
     public CommentAdapter(ArrayList<Comment> comments, Context mContext) {
@@ -26,21 +28,26 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        return new ViewHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.layout_comment,parent,false));
+        return new ViewHolder(mContext, LayoutInflater.from(mContext)
+                .inflate(R.layout.layout_comment,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.comUserName.setText(comments.get(position).getComUserName());
+        holder.comment.setText(comments.get(position).getComment());
+        holder.datePosted.setText(comments.get(position).getDatePosted());
+        Picasso.get().load(comments.get(position).getComProfileImg()).into(holder.comProfileImg);
 
-        Comment
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return comments.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
@@ -49,21 +56,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         private CircleImageView comProfileImg;
         private TextView comUserName;
         private TextView comment;
+        private TextView datePosted;
 
-        public ViewHolder(Context context,@NonNull View itemView) {
+
+        public ViewHolder(Context mContext, @NonNull View itemView) {
             super(itemView);
-
             comProfileImg=itemView.findViewById(R.id.comProfileImg);
             comUserName=itemView.findViewById(R.id.comUserName);
             comment=itemView.findViewById(R.id.comment);
-        }
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
+            datePosted=itemView.findViewById(R.id.datePosted);
 
         }
-
 
         @Override
         public void onClick(View v) {
