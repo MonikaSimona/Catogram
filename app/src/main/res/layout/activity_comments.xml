@@ -47,97 +47,40 @@
 
         />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
+        <EditText
+            android:id="@+id/newComment"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Write a comment"
+            android:layout_marginLeft="8dp"
+            />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Wow, you look beautiful"
-                android:backgroundTintMode="multiply"
-                android:background="@color/userNameBar"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="I think it’s purrfect"
-                android:background="@color/userNameBar"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="I think this is the best I’ve seen in a long time"
-                android:background="@color/userNameBar"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="How did I get so lucky to have such a cool best friend?"
-                android:background="@color/userNameBar"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="We go together like burgers and fries, which, btw, we should go get rn."
-                android:background="@color/userNameBar"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My best friend is the cutest."
-                android:background="@color/userNameBar"
-                android:layout_margin="10dp"
-
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="This is so pawsome!"
-                android:layout_margin="10dp"
-                android:background="@color/userNameBar"
-
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="How did I get so lucky to have such a cool best friend?"
-                android:background="@color/userNameBar"
-
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+        <ImageButton
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/submit"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="40dp"
+            android:onClick="send"/>
 
 
+    </RelativeLayout>
 
-        </LinearLayout>
 
-
-    </ScrollView>
 </LinearLayout>
