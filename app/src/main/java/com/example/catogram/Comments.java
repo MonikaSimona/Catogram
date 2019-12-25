@@ -55,7 +55,7 @@ public class Comments extends AppCompatActivity {
     private void getCommentResponse() {
 
         Retrofit retrofit= new Retrofit.Builder()
-                .baseUrl("http://5e0252d463d08b0014a2885b.mockapi.io/")
+                .baseUrl("http://5ddfd7adbb46ce001434bca8.mockapi.io/posts/{postId}/comments/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -101,7 +101,7 @@ public class Comments extends AppCompatActivity {
         Comment commentRequest = new Comment("","Bojana",commentText,"25/12/2019");
 
         Retrofit retrofit= new Retrofit.Builder()
-                .baseUrl("http://5e0252d463d08b0014a2885b.mockapi.io/")
+                .baseUrl("http://5ddfd7adbb46ce001434bca8.mockapi.io/posts/{postId}/comments/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
