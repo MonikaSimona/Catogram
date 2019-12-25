@@ -7,7 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface APIInterface {
+interface APIInterface {
 
     @GET("/posts")
     Call<List<Post>>  getPostsJson();

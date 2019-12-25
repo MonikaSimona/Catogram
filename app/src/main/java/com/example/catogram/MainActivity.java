@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.DownloadManager;
-import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,11 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    RecyclerView.Adapter myAdapter;
-    RecyclerView.LayoutManager layoutManager;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter myAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
-    ArrayList<Post> posts ;
+    private ArrayList<Post> posts ;
 
 
     @Override
@@ -83,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 posts = new ArrayList<>(response.body());
                 myAdapter = new PostAdapter(MainActivity.this,posts);
                 recyclerView.setAdapter(myAdapter);
-                Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();;
+                Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();
 
             }
 

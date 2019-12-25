@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Comments">
+   <RelativeLayout
+       android:id="@+id/rl2"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+
+      <ImageButton
+          android:id="@+id/back"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/back"
+          android:background="@android:color/transparent"
+
+          android:layout_marginLeft="9dp"
+          android:layout_marginTop="5dp"
+          android:onClick="back"
+
+          />
+       <ImageButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/settings"
+           android:background="@android:color/transparent"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:layout_marginRight="9dp"
+           android:layout_marginTop="5dp"
+           />
+
+
+   </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mainImg"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:src="@drawable/cat1"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <EditText
+            android:id="@+id/newComment"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Write a comment"
+            android:layout_marginLeft="8dp"
+            />
+
+        <ImageButton
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/submit"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="40dp"
+            android:onClick="send"/>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

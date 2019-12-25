@@ -3,8 +3,6 @@ package com.example.catogram;
 import android.content.Context;
 import android.content.Intent;
 
-import androidx.annotation.DrawableRes;
-
 public class Post {
     private String userName;
     private String profileImgUrl;
@@ -13,7 +11,7 @@ public class Post {
     private String numLikes;
     private String datePosted;
 
-    static final String IMAGE_KEY = "Image Resource";
+    private static final String IMAGE_KEY = "Image Resource";
 
     public Post (String userName, String profileImgUrl, String mainImgUrl, String desc, String numLikes, String datePosted){
 

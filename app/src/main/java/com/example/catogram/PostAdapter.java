@@ -29,8 +29,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
-    public ArrayList<Post> posts;
-    public Context mContext;
+    private ArrayList<Post> posts;
+    private Context mContext;
 
 
      public PostAdapter(Context context,ArrayList<Post> posts) {
@@ -78,7 +78,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
        private TextView datePosted;
        private RelativeLayout rl;
 
-       public Post mCurrentPost;
+       Post mCurrentPost;
        private Context mContext;
 
         ViewHolder(View itemView) {
