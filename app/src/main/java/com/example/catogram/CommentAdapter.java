@@ -38,9 +38,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.comUserName.setText(comments.get(position).getComUserName());
         holder.comment.setText(comments.get(position).getComment());
         holder.datePosted.setText(comments.get(position).getDatePosted());
-        Picasso.get().load(comments.get(position).getComProfileImg()).into(holder.comProfileImg);
+       // Picasso.get().load(comments.get(position).getComProfileImg()).into(holder.comProfileImg);
 
-
+        String comProfileImg=comments.get(position).getComProfileImg();
+        Picasso.with(mContext)
+                .load(comProfileImg)
+                .placeholder(android.R.drawable.sym_def_app_icon)
+                .error(android.R.drawable.sym_def_app_icon)
+                .into(holder.comProfileImg);
 
     }
 

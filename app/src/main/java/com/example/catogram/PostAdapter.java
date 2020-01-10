@@ -27,10 +27,17 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.catogram.Post.POST_KEY;
+import static com.example.catogram.Post.IMAGE_KEY;
+
+
+
 public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     private ArrayList<Post> posts;
     private Context mContext;
+
+
 
 
      public PostAdapter(Context context,ArrayList<Post> posts) {
@@ -44,7 +51,7 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_posts,viewGroup,false);
-        return new PostAdapter.ViewHolder(view);
+        return new PostAdapter.ViewHolder(mContext,view);
     }
 
     @Override
@@ -55,9 +62,26 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
          viewHolder.numLikes.setText(posts.get(i).getNumLikes());
          viewHolder.datePosted.setText(posts.get(i).getDatePosted());
 
-        Picasso.get().load(posts.get(i).getMainImgUrl()).into(viewHolder.mainImgUrl);
-        Picasso.get().load(posts.get(i).getProfileImgUrl()).into(viewHolder.profileImg);
 
+        String mainImg = posts.get(i).getMainImgUrl();
+        String profileImg= posts.get(i).getProfileImgUrl();
+
+        // Picasso.get().load(posts.get(i).getMainImgUrl()).into(viewHolder.mainImgUrl);
+        //Picasso.get().load(posts.get(i).getProfileImgUrl()).into(viewHolder.profileImg);
+        Picasso.with(mContext)
+                .load(mainImg)
+                .placeholder(android.R.drawable.sym_def_app_icon)
+                .error(android.R.drawable.sym_def_app_icon)
+                .into(viewHolder.mainImgUrl);
+
+        Picasso.with(mContext)
+                .load(profileImg)
+                .placeholder(android.R.drawable.sym_def_app_icon)
+                .error(android.R.drawable.sym_def_app_icon)
+                .into(viewHolder.profileImg);
+
+        Post currentPost = posts.get(i);
+        viewHolder.mCurrentPost = currentPost;
     }
     @Override
     public int getItemCount() {
@@ -77,11 +101,11 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
        private ImageButton iconLike;
        private TextView datePosted;
        private RelativeLayout rl;
-
-       Post mCurrentPost;
        private Context mContext;
+       Post mCurrentPost;
 
-        ViewHolder(View itemView) {
+
+        ViewHolder(Context context,View itemView) {
             super(itemView);
 
             profileImg = itemView.findViewById(R.id.profileImg);
@@ -92,6 +116,8 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             iconLike = itemView.findViewById(R.id.icon);
             datePosted = itemView.findViewById(R.id.datePosted);
             rl = itemView.findViewById(R.id.rl);
+            mContext=context;
+
 
 
 
@@ -103,7 +129,12 @@ public class PostAdapter  extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
 
-            Intent commentIntent =  Post.starter(mContext, mCurrentPost.getMainImgUrl());
+            Intent commentIntent = new Intent(mContext, Comments.class);
+
+            commentIntent.putExtra(POST_KEY,mCurrentPost.getId());
+
+
+            commentIntent.putExtra(IMAGE_KEY, mCurrentPost.getMainImgUrl());
 
             mContext.startActivity(commentIntent);
         }

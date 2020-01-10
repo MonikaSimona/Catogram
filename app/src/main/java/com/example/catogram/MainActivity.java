@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        createPostRequest();
 
 
         getPostsResponse();
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createPostRequest() {
-        Post postRequest = new Post("Simona ","","","My new post","123","2/2/2012");
+        Post postRequest = new Post("","Simona ","","","My new post","123","2/2/2012");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://5e0252d463d08b0014a2885b.mockapi.io/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -73,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         APIInterface apiInterface = retrofit.create(APIInterface.class);
-        Call<List<Post>> call = apiInterface.getPostsJson();
-        call.enqueue(new Callback<List<Post>>() {
+        Call<ArrayList<Post>> call = apiInterface.getPostsJson();
+        call.enqueue(new Callback<ArrayList<Post>>() {
             @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                posts = new ArrayList<>(response.body());
+            public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
+                posts = response.body();
                 myAdapter = new PostAdapter(MainActivity.this,posts);
                 recyclerView.setAdapter(myAdapter);
                 Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
                 Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_SHORT).show();
 
 
@@ -95,5 +95,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void create(View view) {
+        createPostRequest();
+        Toast.makeText(MainActivity.this,"New post has been created!",Toast.LENGTH_SHORT).show();
+    }
 }
 

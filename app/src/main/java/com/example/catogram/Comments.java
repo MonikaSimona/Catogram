@@ -28,12 +28,14 @@ public class Comments extends AppCompatActivity {
     private RecyclerView commentRecyclerView;
 
     private EditText newComment;
+    public String postID;
     ImageButton send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
+        postID = getIntent().getStringExtra(Post.POST_KEY);
 
        commentRecyclerView = findViewById(R.id.recView);
        commentRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -52,13 +54,13 @@ public class Comments extends AppCompatActivity {
                 .build();
 
         APIInterface APIinterface=retrofit.create(APIInterface.class);
-        Call<List<Comment>> call = APIinterface.getCommentsJson();
-        call.enqueue(new Callback<List<Comment>>(){
+        Call<ArrayList<Comment>> call = APIinterface.getCommentsJson(postID);
+        call.enqueue(new Callback<ArrayList<Comment>>(){
 
 
             @Override
-            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
-                comments = new ArrayList<>();
+            public void onResponse(Call<ArrayList<Comment>> call, Response<ArrayList<Comment>> response) {
+                comments = response.body();
                 commentAdapter = new CommentAdapter(comments, Comments.this);
                 commentRecyclerView.setAdapter(commentAdapter);
 
@@ -67,7 +69,7 @@ public class Comments extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Comment>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<Comment>> call, Throwable t) {
                 Toast.makeText(Comments.this,"FAILED",Toast.LENGTH_SHORT).show();
 
             }
@@ -88,7 +90,7 @@ public class Comments extends AppCompatActivity {
 
         newComment=findViewById(R.id.newComment);
 
-       Editable commentTextE= newComment.getText();
+        Editable commentTextE= newComment.getText();
         String commentText= commentTextE.toString();
         Comment commentRequest = new Comment("","Bojana",commentText,"25/12/2019");
 
@@ -98,7 +100,7 @@ public class Comments extends AppCompatActivity {
                 .build();
 
         APIInterface APIinterface=retrofit.create(APIInterface.class);
-        Call<Comment> getComment = APIinterface.createComment(commentRequest);
+        Call<Comment> getComment = APIinterface.createComment(postID,commentRequest);
 
         getComment.enqueue(new Callback<Comment>() {
             @Override

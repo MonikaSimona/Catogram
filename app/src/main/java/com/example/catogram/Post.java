@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 public class Post {
+    private String id;
     private String userName;
     private String profileImgUrl;
     private String mainImgUrl;
@@ -11,10 +12,12 @@ public class Post {
     private String numLikes;
     private String datePosted;
 
-    private static final String IMAGE_KEY = "Image Resource";
+    static final String IMAGE_KEY = "Image Resource";
+    static final String POST_KEY = "Post";
 
-    public Post (String userName, String profileImgUrl, String mainImgUrl, String desc, String numLikes, String datePosted){
 
+    public Post (String id, String userName, String profileImgUrl, String mainImgUrl, String desc, String numLikes, String datePosted){
+        this.id=id;
         this.userName = userName;
         this.profileImgUrl = profileImgUrl;
         this.mainImgUrl = mainImgUrl;
@@ -22,6 +25,14 @@ public class Post {
         this.numLikes = numLikes;
         this.datePosted = datePosted;
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -72,11 +83,6 @@ public class Post {
         this.datePosted = datePosted;
     }
 
-    static Intent starter(Context context, String imageUrl) {
-        Intent commentIntent = new Intent(context, Comments.class);
 
-        commentIntent.putExtra(IMAGE_KEY, imageUrl);
-        return commentIntent;
-    }
 
 }
